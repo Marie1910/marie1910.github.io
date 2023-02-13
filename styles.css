@@ -1,0 +1,12 @@
+.h-scrollbar {
+    overflow-x: scroll;
+    width: 300px;
+}
+
+
+.h-scrollbar div {
+    width: 1000px;
+    display:block;
+    visibility: hidden;
+    height:0px
+}
