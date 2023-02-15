@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" type="text/javascript"></script>
   </head>
-  <body onload="randomizeLoading()">
+  <body id = "body" onload="randomizeLoading()">
     <div>test</div>
     <div>
       <input type="checkbox" checked />
@@ -20,19 +20,88 @@
         min="1"
         max="100"
         value="50"
-        class="slider"
-        id="myRange"
+        class="typ1"
+        id="firstSlider"
+        orient="vertical"
       />
     </div>
+    <div class="buffer"><input
+      type="range"
+      min="1"
+      max="100"
+      value="50"
+      class="typ2"
+      id="secondSlider"
+    /></div>
     <div>
-      <input
+      
+      <div class="buffer"><input
         type="range"
         min="1"
         max="100"
         value="50"
         class="test"
-        id="basic"
+        id="basic1"
+      /></div>
+      
+      <div class="buffer"><input
+        type="range"
+        min="1"
+        max="100"
+        value="50"
+        class="test2"
+        id="basic2"
+      /></div>
+      
+    </div>
+    <div>testtest</div>
+    <div>
+      <input type="radio" checked />
+      <input type="radio" />
+    </div>
+    <div class="slidecontainer">
+      <input
+        type="range"
+        min="1"
+        max="100"
+        value="50"
+        class="slider"
+        id="myRange"
       />
+    </div>
+    <div class="buffer"><input
+      type="range"
+      min="1"
+      max="100"
+      value="50"
+      class="test2"
+      id="basic"
+    /></div>
+    <div>
+      
+      <div class="buffer"><input
+        type="range"
+        min="1"
+        max="100"
+        value="50"
+        class="test"
+        id="basic1"
+      /></div>
+      
+      <div class="buffer"><input
+        type="range"
+        min="1"
+        max="100"
+        value="50"
+        class="test2"
+        id="basic2"
+      /></div>
+      
+    </div>
+    <div>testtest</div>
+    <div>
+      <input type="checkbox" checked />
+      <input type="radio" />
     </div>
   </body>
 </html>
