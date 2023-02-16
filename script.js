@@ -12,23 +12,53 @@ function randomizeLoading() {
   secondSlider = document.getElementById("secondSlider");
   randomizeSliderTyp2(secondSlider);
 
+  thirdSlider = document.getElementById("thirdSlider");
+  randomizeSliderTyp2(thirdSlider);
+
   brightness = getRandomNumber(0, 255);
   
-  element = document.getElementById("basic");
-  randomizeSilder(element, brightness);
-  randomizeThumb(element, brightness);
-  element = document.getElementById("basic1");
-  randomizeSilder(element, brightness);
-  randomizeThumb(element, brightness);
-  element = document.getElementById("basic2");
-  randomizeSilder(element, brightness);
-  randomizeThumb(element, brightness);
+  
 }
 function randomizeSliderTyp1(element){
+  width = getRandomNumber(10, 100);
+  height = getRandomNumber(2, 5);
+  brightness = getRandomNumber(0, 255);
+  borderRadius = getRandomNumber(0, 10);
+  performStandardSliderRandomization(element, width, height, getRandomBorderStyle(), borderRadius)
+
+  //designing the thumb
+  size = element.getBoundingClientRect();
+  trackHeight = size.bottom-size.top;
+  trackWidth = size.right-size.left;
+  thumbWidth = getRandomNumber(1, (trackWidth/3));
+  thumbHeight = getRandomNumber(trackHeight, 20); 
+  borderRadius = getRandomNumber(0, 20);
+  setThumbProperties(thumbWidth, thumbHeight, borderRadius, getRandomColor(75), getRandomColor(brightness), getRandomBoxShadow(element, null, brightness), borderStyle)
+}
+
+function randomizeSliderTyp2(element){
+  width = getRandomNumber(10, 100);
+  trackHeight = getRandomNumber(10, 50);
+  brightness = getRandomNumber(0, 255);
+  borderRadius = getRandomNumber(0, 20);
+  performStandardSliderRandomization(element, width, trackHeight, getRandomBorderStyle(), borderRadius)
+ 
+  //designing the thumb
+  size = element.getBoundingClientRect();
+  trackWidth = size.right-size.left;
+  thumbWidth = getRandomNumber(1, (trackWidth/10));
+  thumbHeight = getRandomNumber(trackHeight, trackHeight+10); 
+  borderRadius = getRandomNumber(0, 20);
+  setThumbProperties(thumbWidth, thumbHeight, borderRadius, getRandomColor(75), getRandomColor(brightness), getRandomBoxShadow(element, brightness), borderStyle)
+  element.value = String(getRandomNumber(0, 100));
+}
+
+
+function randomizeSliderTyp3(element){
   baseString = "";
 
   width = getRandomNumber(10, 100);
-  height = getRandomNumber(2, 5);
+  height = getRandomNumber(5, 30);
   contraryRed = 255 - rgb[0];
   contraryGreen = 255 - rgb[1];
   contraryBlue = 255 - rgb[2];
@@ -38,7 +68,7 @@ function randomizeSliderTyp1(element){
   //desiging the track
   element.style.height = baseString.concat(height, "px");
   element.style.width = baseString.concat(width, "%");
-  element.style.borderStyle = "none";
+  element.style.borderStyle = getRandomBorderStyle();
   element.style.borderRadius = baseString.concat(borderRadius, "px");
   element.style.background = baseString.concat("rgb(",contraryRed,",",contraryGreen,",",contraryBlue,")");
 
@@ -47,90 +77,37 @@ function randomizeSliderTyp1(element){
   trackHeight = size.bottom-size.top;
   trackWidth = size.right-size.left;
   width = getRandomNumber(1, (trackWidth/3));
-  height = getRandomNumber(trackHeight, 20); 
+  height = getRandomNumber(5, trackHeight); 
   borderRadius = getRandomNumber(0, 20);
-
-  element.style.setProperty("--thumbWidth", baseString.concat(width, "px"));
-  element.style.setProperty("--thumbHeight", baseString.concat(height, "px"));
-  element.style.setProperty("--thumbBorderRadius", baseString.concat(borderRadius, "px"));
-  element.style.setProperty("--thumbBackground", getRandomColor(brightness));
-  element.style.setProperty("--thumbBorderColor", getRandomColor(brightness));
-  element.style.setProperty("--thumbBorderStyle", getRandomBorderStyle());
-  element.value = String(getRandomNumber(0, 100));
+  setThumbProperties(width, height, borderRadius, getRandomColor(75), getRandomColor(brightness), null, getRandomBorderStyle())
 }
 
-function randomizeSliderTyp2(element){
+function performStandardSliderRandomization(element, width, height, borderStyle, borderRadius){
   baseString = "";
-
-  width = getRandomNumber(10, 100);
-  height = getRandomNumber(10, 50);
   contraryRed = 255 - rgb[0];
   contraryGreen = 255 - rgb[1];
   contraryBlue = 255 - rgb[2];
-  brightness = getRandomNumber(0, 255);
-  borderRadius = getRandomNumber(0, 20);
-  borderStyle = getRandomBorderStyle();
+  element.value = String(getRandomNumber(0, 100));
 
-  //desiging the track
+   //desiging the track
   element.style.height = baseString.concat(height, "px");
   element.style.width = baseString.concat(width, "%");
   element.style.borderStyle = borderStyle;
   element.style.borderRadius = baseString.concat(borderRadius, "px");
   element.style.background = baseString.concat("rgb(",contraryRed,",",contraryGreen,",",contraryBlue,")");
-
-  //designing the thumb
-  size = element.getBoundingClientRect();
-  trackHeight = size.bottom-size.top;
-  trackWidth = size.right-size.left;
-  width = getRandomNumber(1, (trackWidth/10));
-  height = getRandomNumber(0, trackHeight+10); 
-  borderRadius = getRandomNumber(0, 20);
-
-  element.style.setProperty("--thumbWidth", baseString.concat(width, "px"));
-  element.style.setProperty("--thumbHeight", baseString.concat(height, "px"));
-  element.style.setProperty("--thumbBorderRadius", baseString.concat(borderRadius, "px"));
-  element.style.setProperty("--thumbBackground", getRandomColor(brightness));
-  element.style.setProperty("--thumbBorderColor", getRandomColor(brightness));
-  element.style.setProperty("--thumbBoxShadow", getRandomBoxShadow(element, contraryRed, contraryGreen, contraryBlue));
-  element.style.setProperty("--thumbBorderStyle", borderStyle);
-  element.value = String(getRandomNumber(0, 100));
-}
-
-
-function randomizeSilder(element, brightness) {
-  baseString = "";
-
-  width = getRandomNumber(10, 100);
-  height = getRandomNumber(5, 30);
-  //brightness = getRandomNumber(0, 255);
-  borderRadius = getRandomNumber(0, 20);
-
-  element.style.height = baseString.concat(height, "px");
-  element.style.width = baseString.concat(width, "%");
-  element.style.background = getRandomColor(brightness);
-  element.style.borderStyle = getRandomBorderStyle();
   element.style.borderRadius = baseString.concat(borderRadius, "px");
-}
-function randomizeThumb(element, brightness) {
-  baseString = "";
-  size = element.getBoundingClientRect();
-  elemHeight = size.bottom-size.top;
-  elemWidth = size.right-size.left;
-  width = getRandomNumber(5, (elemWidth/2));
-  height = getRandomNumber(elemHeight, 35); 
-  //brightness = getRandomNumber(0, 255);
-  borderRadius = getRandomNumber(0, 100);
-
-  element.style.setProperty("--thumbWidth", baseString.concat(width, "px"));
-  element.style.setProperty("--thumbHeight", baseString.concat(height, "px"));
-  element.style.setProperty("--thumbBorderRadius", baseString.concat(borderRadius, "px"));
-  element.style.setProperty("--thumbBackground", getRandomColor(brightness));
-  element.style.setProperty("--thumbBorderColor", getRandomColor(brightness));
-  element.style.setProperty("--thumbBorderStyle", getRandomBorderStyle());
-  
-  element.value = getRandomNumber(0, 100);
+  element.style.background = baseString.concat("rgb(",contraryRed,",",contraryGreen,",",contraryBlue,")");
 }
 
+function setThumbProperties(width, height, borderRadius, color, borderColor, boxShadow, borderStyle){
+  element.style.setProperty("--thumbWidth", width);
+  element.style.setProperty("--thumbHeight", height);
+  element.style.setProperty("--thumbBorderRadius", borderRadius);
+  element.style.setProperty("--thumbBackground", color);
+  element.style.setProperty("--thumbBorderColor", borderColor);
+  element.style.setProperty("--thumbBoxShadow", boxShadow);
+  element.style.setProperty("--thumbBorderStyle", borderStyle);
+}
 function getRandomBorderStyle(){
   number = Math.round(getRandomNumber(1,100))
   switch (number){
@@ -156,65 +133,50 @@ function getRandomBorderStyle(){
   
 
 }
-function getRandomBoxShadow(element, contraryRed, contraryGreen, contraryBlue){
+function getRandomBoxShadow(element, color, brightness){
   size = element.getBoundingClientRect();
   width = size.right-size.left;
   baseString = "";
-  randomifier = getRandomNumber(0,10);
-  console.log(randomifier)
-  console.log(contraryRed)
+  
   //this might turn into a shit show in case smths bigger than 255 or smaller than zero
-  if(randomifier%2==0){
-    let red = Math.round(contraryRed+randomifier > 255? contraryRed-randomifier : contraryRed+randomifier);
-
-    let green = Math.round(contraryBlue+randomifier > 255? contraryBlue-randomifier : contraryBlue+randomifier);
-    let blue = Math.round(contraryGreen+randomifier > 255? contraryGreen-randomifier : contraryGreen+randomifier);
-    color = baseString.concat("rgb(",red,",",green,",",blue,")");
-    console.log(color)
+  if(color != null){
+    return baseString.concat("-", width, "px ", "0 0 ", width, "px ", color);
   }
   else{
-    let red = Math.round(contraryRed-randomifier < 0? contraryRed+randomifier : contraryRed-randomifier);
-    let green = Math.round(contraryBlue-randomifier < 0? contraryBlue+randomifier : contraryBlue-randomifier);
-    let blue = Math.round(contraryGreen-randomifier < 0? contraryGreen+randomifier : contraryGreen-randomifier);
-    color = baseString.concat("rgb(",red,",",green,",",blue,")");
-    console.log(color)
+    return baseString.concat("-", width, "px ", "0 0 ", width, "px ", getRandomColor(brightness));
   }
   
-  return baseString.concat("-", width, "px ", "0 0 ", width, "px ", color);
 }
 function determineColorSchema(){
-  mode = Math.round(getRandomNumber(0, 3));
+  mode = Math.round(getRandomNumber(0, 1));
   let red;
   let green;
   let blue;
   switch (mode) {
     //light
     case 0:
-      red = getRandomNumber(230, 255);
-      green = getRandomNumber(230, 255);
-      blue = getRandomNumber(230, 255);
+      red = getRandomNumber(200, 235);
+      green = getRandomNumber(200, 235);
+      blue = getRandomNumber(200, 235);
       break;
     //dark
     case 1:
-      red = getRandomNumber(0, 30);
-      green = getRandomNumber(0, 30);
-      blue = getRandomNumber(0, 30);
-      break;
-    //colorful
-    case 2:
-      red = getRandomNumber(0, 30);
-      green = getRandomNumber(0, 30);
-      blue = getRandomNumber(0, 30);
+      red = getRandomNumber(10, 55);
+      green = getRandomNumber(10, 55);
+      blue = getRandomNumber(10, 55);
       break;
     default:
-      red = getRandomNumber(230, 255);
-      green = getRandomNumber(230, 255);
-      blue = getRandomNumber(230, 255);
+      red = getRandomNumber(200, 255);
+      green = getRandomNumber(200, 255);
+      blue = getRandomNumber(200, 255);
       console.log("default")
 
   }
   return [red, green, blue];
 }
+
+
+
 function getRandomColor(brightness) {
   function randomChannel(brightness) {
     var r = 255 - brightness;

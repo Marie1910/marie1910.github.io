@@ -61,13 +61,11 @@
   
 }
 
-
-.test {
+.typ3{
   -webkit-appearance: none;
   float: right;
   /* Override default CSS styles */
   appearance: none;
-  overflow: hidden;
   /* Adding the vars for the thumb */
   --thumbWidth: 25px;
   --thumbHeight: 25px;
@@ -75,60 +73,10 @@
   --thumbBorderColor: grey;
   --thumbBorderRadius: 1px;
   --thumbBorderStyle: solid;
-  --thumbBoxShadow: -200px 0 0 200px dodgerblue;
-}
-.test2 {
-  -webkit-appearance: none;
-  float: left;
-  /* Override default CSS styles */
-  appearance: none;
-  /* Adding the vars for the thumb */
-  --thumbWidth: 25px;
-  --thumbHeight: 25px;
-  --thumbBackground: white;
-  --thumbBorderColor: white;
-  --thumbBorderRadius: 1px;
-  --thumbBorderStyle: solid;
-  --thumbBoxShadow: -200px 0 0 200px dodgerblue;
+
 }
 
-/* The slider itself */
-.slider {
-  -webkit-appearance: none;
-
-  /* Override default CSS styles */
-  appearance: none;
-  width: 50%;
-  /* Full-width */
-  background: #d3d3d3;
-  /* Grey background */
-  outline: none;
-  /* Remove outline */
-  opacity: 0.7;
-  /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: 0.2s;
-  /* 0.2 seconds transition on hover */
-  transition: opacity 0.2s;
-
-  height: 15px;
-  border-radius: 5px;
-}
-
-.test::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-
-  width: var(--thumbWidth);
-  height: var(--thumbHeight);
-  background: var(--thumbBackground);
-  border-style: var(--thumbBorderStyle);
-  box-shadow: var(--thumbBoxShadow);
-  border-radius: var(--thumbBorderRadius);
-  border-color: var(--thumbBorderColor);
-  
-}
-
-.test2::-webkit-slider-thumb {
+.typ3::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
 
@@ -140,10 +88,8 @@
   border-color: var(--thumbBorderColor);
   
 }
-div:not(:last-child) {
-  margin-top: 40px;
-}
+
 .buffer{
-  height: 25px;
+  height: 75px;
   margin: 25px;
 }
