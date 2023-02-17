@@ -13,73 +13,118 @@ function randomizeLoading() {
   randomizeSliderTyp2(secondSlider);
 
   thirdSlider = document.getElementById("thirdSlider");
-  randomizeSliderTyp2(thirdSlider);
+  randomizeSliderTyp3(thirdSlider);
 
-  brightness = getRandomNumber(0, 255);
-  
+  fourthSlider = document.getElementById("fourthSlider");
+  randomizeSliderTyp4(fourthSlider);
+
+  mySlider = document.getElementById("anotherSlider");
+  randomizeSliderTyp4(mySlider);
+
+
   
 }
 function randomizeSliderTyp1(element){
-  width = getRandomNumber(10, 100);
-  height = getRandomNumber(2, 5);
+  width = getRandomNumber(10, 50);
+  trackHeight = getRandomNumber(3, 5);
   brightness = getRandomNumber(0, 255);
   borderRadius = getRandomNumber(0, 10);
-  performStandardSliderRandomization(element, width, height, getRandomBorderStyle(), borderRadius)
+  performStandardSliderRandomization(element, width, trackHeight, getRandomBorderStyle(), borderRadius)
 
   //designing the thumb
   size = element.getBoundingClientRect();
-  trackHeight = size.bottom-size.top;
   trackWidth = size.right-size.left;
+
   thumbWidth = getRandomNumber(1, (trackWidth/3));
+  console.log(thumbWidth);
   thumbHeight = getRandomNumber(trackHeight, 20); 
   borderRadius = getRandomNumber(0, 20);
-  setThumbProperties(thumbWidth, thumbHeight, borderRadius, getRandomColor(75), getRandomColor(brightness), getRandomBoxShadow(element, null, brightness), borderStyle)
+  color = getRandomColor(75)
+  borderColor = getRandomColor(brightness)
+  boxShadow = getRandomBoxShadow(element, null, brightness)
+  borderStyle = "none"
+
+  setThumbProperties(element, thumbWidth, thumbHeight, borderRadius, color,  borderColor, boxShadow, "none")
 }
 
+
 function randomizeSliderTyp2(element){
-  width = getRandomNumber(10, 100);
-  trackHeight = getRandomNumber(10, 50);
+  width = getRandomNumber(10, 50);
+  trackHeight = getRandomNumber(3, 30);
   brightness = getRandomNumber(0, 255);
-  borderRadius = getRandomNumber(0, 20);
+  borderRadius = getRandomNumber(0, 10);
   performStandardSliderRandomization(element, width, trackHeight, getRandomBorderStyle(), borderRadius)
- 
+
   //designing the thumb
   size = element.getBoundingClientRect();
   trackWidth = size.right-size.left;
-  thumbWidth = getRandomNumber(1, (trackWidth/10));
-  thumbHeight = getRandomNumber(trackHeight, trackHeight+10); 
-  borderRadius = getRandomNumber(0, 20);
-  setThumbProperties(thumbWidth, thumbHeight, borderRadius, getRandomColor(75), getRandomColor(brightness), getRandomBoxShadow(element, brightness), borderStyle)
-  element.value = String(getRandomNumber(0, 100));
+
+  thumbWidth = getRandomNumber(1, (trackWidth/3));
+  console.log(thumbWidth);
+  thumbHeight = getRandomNumber(trackHeight, 30); 
+  borderRadius = getRandomNumber(0, 5);
+  color = getRandomColor(75)
+  borderColor = getRandomColor(brightness)
+  boxShadow = getRandomBoxShadow(element, null, brightness)
+  borderStyle = getRandomBorderStyle()
+
+  setThumbProperties(element, thumbWidth, thumbHeight, borderRadius, color,  borderColor, boxShadow, "none")
+  
 }
 
 
 function randomizeSliderTyp3(element){
-  baseString = "";
-
-  width = getRandomNumber(10, 100);
-  height = getRandomNumber(5, 30);
-  contraryRed = 255 - rgb[0];
-  contraryGreen = 255 - rgb[1];
-  contraryBlue = 255 - rgb[2];
+  width = getRandomNumber(3, 50);
+  trackHeight = getRandomNumber(3, 30);
   brightness = getRandomNumber(0, 255);
-  borderRadius = getRandomNumber(0, 10);
+  borderRadius = getRandomNumber(0,10)
+  performStandardSliderRandomization(element, width, trackHeight, "solid", borderRadius)
+  element.style.width = baseString.concat(width, "px");
+  color = getRandomColor(75)
+  randomizer = Math.round(getRandomNumber(0,1))
+  if(randomizer == 0){
+    element.style.borderLeft = getRandomBorderTrackVariation(color, brightness);
+  }
+  else{
+    element.style.borderLeft = getRandomBorderTrackVariation(getRandomColor(75), brightness);
+  }
+  
+  element.style.borderRight = getRandomBorderTrackVariation(element.style.background, brightness);
+  element.style.borderTop = "none";
+  element.style.borderBottom = "none";
+  thumbHeight = getRandomNumber(trackHeight, 40); 
+  borderRadius = getRandomNumber(0, 5);
+  
+  borderColor = getRandomColor(brightness)
+  borderStyle = getRandomBorderStyle()
 
-  //desiging the track
-  element.style.height = baseString.concat(height, "px");
-  element.style.width = baseString.concat(width, "%");
-  element.style.borderStyle = getRandomBorderStyle();
-  element.style.borderRadius = baseString.concat(borderRadius, "px");
-  element.style.background = baseString.concat("rgb(",contraryRed,",",contraryGreen,",",contraryBlue,")");
+  setThumbProperties(element, width, thumbHeight, borderRadius, color,  color, null, borderStyle)
+  element.value = 0;
+  
+}
 
+function randomizeSliderTyp4(element){
+  greyScales =["#a9a9a9", "#989898", "#878787", "#767676", "#656565", "#555555", "#444444", "#333333", "#222222", "#111111"]
+  randomNumber = Math.round(getRandomNumber(0,greyScales.length-1))
+  trackColor = greyScales[randomNumber]
+  thumbColor = greyScales[greyScales.length-1 - randomNumber]
+
+  width = getRandomNumber(10, 50);
+  trackHeight = getRandomNumber(3, 30);
+  brightness = getRandomNumber(0, 255);
+  borderRadius = getRandomNumber(0, 30);
+  performStandardSliderRandomization(element, width, trackHeight, "none", borderRadius)
+  element.style.backgroundColor = trackColor;
   //designing the thumb
   size = element.getBoundingClientRect();
-  trackHeight = size.bottom-size.top;
   trackWidth = size.right-size.left;
-  width = getRandomNumber(1, (trackWidth/3));
-  height = getRandomNumber(5, trackHeight); 
-  borderRadius = getRandomNumber(0, 20);
-  setThumbProperties(width, height, borderRadius, getRandomColor(75), getRandomColor(brightness), null, getRandomBorderStyle())
+
+  thumbWidth = getRandomNumber(1, (trackWidth/2));
+  thumbHeight = getRandomNumber(5, 30); 
+  borderRadius = getRandomNumber(0, 5);
+
+  setThumbProperties(element, thumbWidth, thumbHeight, borderRadius, thumbColor,  "none", "none", "none")
+ 
 }
 
 function performStandardSliderRandomization(element, width, height, borderStyle, borderRadius){
@@ -95,11 +140,14 @@ function performStandardSliderRandomization(element, width, height, borderStyle,
   element.style.borderStyle = borderStyle;
   element.style.borderRadius = baseString.concat(borderRadius, "px");
   element.style.background = baseString.concat("rgb(",contraryRed,",",contraryGreen,",",contraryBlue,")");
-  element.style.borderRadius = baseString.concat(borderRadius, "px");
-  element.style.background = baseString.concat("rgb(",contraryRed,",",contraryGreen,",",contraryBlue,")");
 }
 
-function setThumbProperties(width, height, borderRadius, color, borderColor, boxShadow, borderStyle){
+function setThumbProperties(element, width, height, borderRadius, color, borderColor, boxShadow, borderStyle){
+  baseString = "";
+  height = baseString.concat(height, "px");
+  width = baseString.concat(width, "px");
+  borderRadius = baseString.concat(borderRadius, "px");
+
   element.style.setProperty("--thumbWidth", width);
   element.style.setProperty("--thumbHeight", height);
   element.style.setProperty("--thumbBorderRadius", borderRadius);
@@ -130,8 +178,13 @@ function getRandomBorderStyle(){
     default:
       return "none"
   }
-  
+}
 
+function getRandomBorderTrackVariation(color, brightness){
+  //100px solid blue;
+  width = getRandomNumber(10, 120);
+  color = color = null? getRandomColor(brightness): color
+  return "" + width + "px solid " + color  
 }
 function getRandomBoxShadow(element, color, brightness){
   size = element.getBoundingClientRect();

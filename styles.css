@@ -66,14 +66,8 @@
   float: right;
   /* Override default CSS styles */
   appearance: none;
-  /* Adding the vars for the thumb */
-  --thumbWidth: 25px;
-  --thumbHeight: 25px;
-  --thumbBackground: grey;
-  --thumbBorderColor: grey;
-  --thumbBorderRadius: 1px;
-  --thumbBorderStyle: solid;
-
+  
+  
 }
 
 .typ3::-webkit-slider-thumb {
@@ -86,6 +80,28 @@
   border-style: var(--thumbBorderStyle);
   border-radius: var(--thumbBorderRadius);
   border-color: var(--thumbBorderColor);
+ /* box-shadow: var(--thumbBoxShadow);*/
+  
+}
+
+.typ4{
+  -webkit-appearance: none;
+  float: right;
+  /* Override default CSS styles */
+  appearance: none; 
+}
+
+.typ4::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: var(--thumbWidth);
+  height: var(--thumbHeight);
+  background: var(--thumbBackground);
+  border-style: var(--thumbBorderStyle);
+  border-radius: var(--thumbBorderRadius);
+  border-color: var(--thumbBorderColor);
+ /* box-shadow: var(--thumbBoxShadow);*/
   
 }
 
