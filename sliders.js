@@ -18,8 +18,14 @@ function randomizeLoading() {
   fourthSlider = document.getElementById("fourthSlider");
   randomizeSliderTyp4(fourthSlider);
 
-  mySlider = document.getElementById("anotherSlider");
-  randomizeSliderTyp4(mySlider);
+  fifthSlider = document.getElementById("fifthSlider");
+  randomizeSliderTyp4(fifthSlider);
+
+ sixthSlider = document.getElementById("sixthSlider");
+  randomizeSliderTyp4(sixthSlider);
+
+  seventhSlider = document.getElementById("seventhSlider");
+  randomizeSliderTyp4(seventhSlider);
 
 
   
@@ -74,7 +80,7 @@ function randomizeSliderTyp2(element){
 
 
 function randomizeSliderTyp3(element){
-  width = getRandomNumber(3, 50);
+  width = getRandomNumber(3, 30);
   trackHeight = getRandomNumber(3, 30);
   brightness = getRandomNumber(0, 255);
   borderRadius = getRandomNumber(0,10)
@@ -182,7 +188,7 @@ function getRandomBorderStyle(){
 
 function getRandomBorderTrackVariation(color, brightness){
   //100px solid blue;
-  width = getRandomNumber(10, 120);
+  width = getRandomNumber(20, 200);
   color = color = null? getRandomColor(brightness): color
   return "" + width + "px solid " + color  
 }

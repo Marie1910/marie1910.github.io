@@ -11,24 +11,48 @@
   <body id = "body" onload="randomizeLoading()">
     <div>test</div>
     <div>
-      <input type="checkbox" checked />
+      <input type="checkbox" calss = "checkbox" checked />
+      <div class="checkbox-example">
+        <input type="checkbox" value="1" id="checkboxOneInput"/>
+        <label for="checkboxOneInput"></label>
+      </div>
       <input type="checkbox" />
     </div>
+    <label class="container">One
+      <input type="checkbox" checked="checked">
+      <span class="checkmark"></span>
+    </label>
+    
+    <label class="container">Two
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+    
+    <label class="container">Three
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+    
+    <label class="container">Four
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
     <div class="buffer">
-      <input type="range" min="1" max="100" value="50" class="typ1" id="firstSlider"/>
+      <input type="range" min="1" max="100" value="50" class="sliderLeft" id="firstSlider"/>
+      <input type="range" min="1" max="100" value="50" class="sliderRight" id="secondSlider"/>
     </div>
     <div class="buffer">
-      <input type="range" min="1" max="100" value="50" class="typ2" id="secondSlider"/></div>
+      <input type="range" min="1" max="100" value="50" class="sliderLeft" id="thirdSlider"/>
+      <input type="range" min="1" max="100" value="50" class="sliderRight" id="fourthSlider"/>
+    </div>
       
     <div class="buffer">
-      <input type="range" min="1" max="100" value="50" class="typ3" id="thirdSlider"/>
+      <input type="range" min="1" max="100" value="50" class="sliderLeft" id="fifthSlider"/>
+      <input type="range" min="1" max="100" value="50" class="sliderRight" id="sixthSlider"/>
     </div>
       
     <div class="buffer">
-      <input type="range" min="1" max="100" value="50" class="typ4" id="fourthSlider"/>
-    </div>
-    <div class="buffer">
-      <input type="range" min="1" max="100" value="50" class="typ4" id="anotherSlider"/>
+      <input type="range" min="1" max="100" value="50" class="sliderLeft" id="seventhSlider"/>
     </div>
 
   </body>
