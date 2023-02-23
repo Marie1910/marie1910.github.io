@@ -1,0 +1,79 @@
+/* Customize the label (the container) */
+.container {
+    display: block;
+    float: left;
+    position: relative;
+    margin: 30px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #a10a0a;
+    --color-checked: #a10a0a;
+    --mark-style: solid;
+    --mark-color: #a10a0a;
+    --mark-left: 9px;
+    --mark-top: 5px;
+    --mark-width: 30px;
+    --mark-height: 10px;
+    --mark-border-width: 3px;
+    --mark-border-radius: 3px;
+  }
+  
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: var(--color-checked);
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: var(--mark-left);
+    top: var(--mark-top);
+    width: var(--mark-width);
+    height: var(--mark-height);
+    border-style: var(--mark-style);
+    border-color: var(--mark-color);
+    border-radius: var(--mark-border-radius);
+    border-top-width: 0px ;
+    border-right-width: var(--mark-border-width);
+    border-bottom-width: var(--mark-border-width);
+    border-left-width: 0px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .slidecontainer {
+    width: 100%;
+    /* Width of the outside container */
+  }
+

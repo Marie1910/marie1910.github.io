@@ -1,0 +1,62 @@
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    float: left;
+    margin: 30px;
+    width: 60px;
+    height: 34px;
+    --checked-color: red;
+    --unchecked-color: blue;
+    --overall-border: 0px;
+    --toggle-color: pink;
+    --toggle-radius : 0%;
+    --toggle-size : 26px;
+    --toggle-border-height : 4px;
+    --toggle-border-width : 4px;
+    --toggle-checked-position: 26px:
+
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+ 
+    background-color: var(--unchecked-color);
+    border-radius: var(--overall-border);
+
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    /*references the point*/
+    height: var(--toggle-size);
+    width: var(--toggle-size);
+    left: var(--toggle-border-width);
+    bottom: var(--toggle-border-height);
+    background-color: var(--toggle-color);
+    border-radius: var(--toggle-radius);
+ 
+  }
+  
+  input:checked + .slider {
+    background-color: var(--checked-color);
+  }
+   
+  input:checked + .slider:before {
+    transform: translateX(var(--toggle-checked-position));
+  }
+  

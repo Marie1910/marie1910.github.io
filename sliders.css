@@ -1,0 +1,58 @@
+.sliderRight {
+  -webkit-appearance: none;
+  float: right;
+  /* Override default CSS styles */
+  appearance: none;
+  /* Adding the vars for the thumb */
+  --thumbWidth: 25px;
+  --thumbHeight: 25px;
+  --thumbBackground: grey;
+  --thumbBorderColor: grey;
+  --thumbBorderRadius: 1px;
+  --thumbBorderStyle: solid;
+  --thumbBoxShadow: -200px 0 0 200px dodgerblue;
+
+}
+
+.sliderRight::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: var(--thumbWidth);
+  height: var(--thumbHeight);
+  background: var(--thumbBackground);
+  border-style: var(--thumbBorderStyle);
+  border-radius: var(--thumbBorderRadius);
+  border-color: var(--thumbBorderColor);
+  
+}
+
+.sliderLeft {
+  -webkit-appearance: none;
+  float: left;
+  /* Override default CSS styles */
+  appearance: none;
+  /* Adding the vars for the thumb */
+  --thumbWidth: 25px;
+  --thumbHeight: 25px;
+  --thumbBackground: grey;
+  --thumbBorderColor: grey;
+  --thumbBorderRadius: 1px;
+  --thumbBorderStyle: solid;
+  --thumbBoxShadow: -200px 0 0 200px dodgerblue;
+
+}
+
+.sliderLeft::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: var(--thumbWidth);
+  height: var(--thumbHeight);
+  background: var(--thumbBackground);
+  border-style: var(--thumbBorderStyle);
+  border-radius: var(--thumbBorderRadius);
+  border-color: var(--thumbBorderColor);
+  
+}
+
